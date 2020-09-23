@@ -31,12 +31,12 @@ const generatePDF = async (name) => {
   pdfDoc.registerFontkit(fontkit);
 
   //get font
-  const fontBytes = await fetch("./Sanchez-Regular.ttf").then((res) =>
+  const fontBytes = await fetch("./Satisfy-Regular.ttf").then((res) =>
     res.arrayBuffer()
   );
 
   // Embed our custom font in the document
-  const SanChezFont = await pdfDoc.embedFont(fontBytes);
+  const SatisfyFont = await pdfDoc.embedFont(fontBytes);
 
   // Get the first page of the document
   const pages = pdfDoc.getPages();
@@ -44,11 +44,11 @@ const generatePDF = async (name) => {
 
   // Draw a string of text diagonally across the first page
   firstPage.drawText(name, {
-    x: 300,
-    y: 270,
-    size: 58,
-    font: SanChezFont,
-    color: rgb(0.2, 0.84, 0.67),
+    x: 310,
+    y: 285,
+    size: 48,
+    font: Satisfy,
+    color: rgb(181,156,80),
   });
 
   // Serialize the PDFDocument to bytes (a Uint8Array)
@@ -62,7 +62,7 @@ const generatePDF = async (name) => {
 
   var file = new File(
     [pdfBytes],
-    "Padhega India Subscription Certificate.pdf",
+    "Certificate.pdf",
     {
       type: "application/pdf;charset=utf-8",
     }
