@@ -1,3 +1,4 @@
+
 const userName = document.getElementById("name");
 const submitBtn = document.getElementById("submitBtn");
 
@@ -31,12 +32,12 @@ const generatePDF = async (name) => {
   pdfDoc.registerFontkit(fontkit);
 
   //get font
-  const fontBytes = await fetch("./Sanchez-Regular.ttf").then((res) =>
+  const fontBytes = await fetch("./Satisfy-Regular.ttf").then((res) =>
     res.arrayBuffer()
   );
 
   // Embed our custom font in the document
-  const SanChezFont = await pdfDoc.embedFont(fontBytes);
+  const SatisfyFont = await pdfDoc.embedFont(fontBytes);
 
   // Get the first page of the document
   const pages = pdfDoc.getPages();
@@ -45,9 +46,9 @@ const generatePDF = async (name) => {
   // Draw a string of text diagonally across the first page
   firstPage.drawText(name, {
     x: 310,
-    y: 282,
+    y: 285,
     size: 48,
-    font: SanChezFont,
+    font: Satisfy,
     color: rgb(181,156,80),
   });
 
@@ -62,7 +63,7 @@ const generatePDF = async (name) => {
 
   var file = new File(
     [pdfBytes],
-    "Padhega India Subscription Certificate.pdf",
+    "Certificate.pdf",
     {
       type: "application/pdf;charset=utf-8",
     }
